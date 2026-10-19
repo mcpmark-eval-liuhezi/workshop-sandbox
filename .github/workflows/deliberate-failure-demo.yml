@@ -1,0 +1,18 @@
+name: Deliberate failure demo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  fail-on-purpose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show a friendly message first
+        run: echo "This workflow is designed to fail on purpose - a red run is expected!"
+
+      - name: This step always fails
+        run: |
+          echo "Deliberately exiting with status 1 for the workshop demo."
+          exit 1
